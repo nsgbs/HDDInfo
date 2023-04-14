@@ -1,0 +1,86 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+nav {
+    height: 50px;
+    width: 100%;
+    background-color: #004353;
+    border-bottom: 1px solid #002554;
+  }
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+  }
+
+nav ul ul {
+  display: inline-block;
+  background-color: #004353;
+  position:absolute;
+}
+nav li {
+    flex-grow: unset;
+}
+
+nav a {
+    display: block;
+    color: #fff;
+    text-align: center;
+    text-decoration: none;
+    padding: 15px;
+    transition: background-color 0.1s ease;
+  }
+
+  
+nav a:hover {
+    background-color: #002554;
+  }
+
+#configButton:hover {
+    background-color: crimson;
+}
+
+.menu-cascading {
+  display: none;
+  
+}
+
+.menu-cascading:hover{
+  display: inline-block;
+  background-color: #004353
+}
+
+#containerDiv {
+  background-color: rgb(233, 233, 233);
+  display: flex;
+  justify-content: center;
+}
+
+#mainContentDiv{
+  background-color: rgb(180, 180, 180);
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  height: 100vh;
+  width: 66%;
+}
+
+#systemMainStatus {
+  background-color: coral;
+  box-sizing: border-box;
+  width: 100%;
+  height: 25vh;
+  
+}
+
+#listDevices{
+  background-color: darkmagenta;
+  box-sizing: border-box;
+  width: 100%;
+
+}
