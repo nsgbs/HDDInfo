@@ -56,18 +56,18 @@ nav a:hover {
 }
 
 #containerDiv {
-  background-color: rgb(233, 233, 233);
+  background-color: #DDDDDD;
   display: flex;
   justify-content: center;
 }
 
 #mainContentDiv{
-  background-color: rgb(180, 180, 180);
+  background-color: #DDDDDD;
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
-  height: 100vh;
   width: 66%;
+  max-width: 800px;
 }
 
 #systemMainStatus {
@@ -75,12 +75,40 @@ nav a:hover {
   box-sizing: border-box;
   width: 100%;
   height: 25vh;
-  
+  display: flex;
+  flex-direction: column;
 }
 
 #listDevices{
-  background-color: darkmagenta;
+  background-color: rgba(173, 81, 173, 0);
   box-sizing: border-box;
   width: 100%;
 
+}
+
+.devicesMainContainer{
+  padding: 10px;
+}
+
+.devicesMain{
+  border: 6px solid #5D737E;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+#systemMainStatusDiv{
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.topMain-paragraph {
+  margin: 8px 0px;
+}
+
+.bottom-paragraph {
+  margin-top: auto;
+  margin-bottom: 1px;
+  text-align: center;
+  font-size: 13px;
 }

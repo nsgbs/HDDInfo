@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
-  <link rel="stylesheet" type="text/css" href="styles.css" />
+  <link rel="stylesheet" type="text/css" href="/styles.css" />
 </head>
 
 <body>
@@ -24,11 +24,32 @@
   </nav>
   <div id="containerDiv">
     <div id="mainContentDiv">
-      <div id="systemMainStatus">systemMainStatus</div>
-      <div id="listDevices">listDevices</div>
+      <div id="systemMainStatus">
+        <div id="systemMainStatusDiv">
+          <p class="topMain-paragraph">DISK USAGE: 25%</p>
+          <p class="topMain-paragraph">ACTIONS: NONE</p>
+          <p class="topMain-paragraph">STATUS: OK</p>
+          <p class="topMain-paragraph">S.M.A.R.T. LAST FETCH: 5 MIN AGO</p>
+          <p class="bottom-paragraph">Developed by NSG</p></div>
+        <div></div>
+      </div>
+      <div id="listDevices">
+        <div class="devicesMainContainer">
+          <div class="devicesMain"><p>HDD ID: 1 </p> <p>TEMP 35ºC</p> <p> HEALTH: 100%</p></div>
+        </div>
+        <div class="devicesMainContainer">
+          <div class="devicesMain"><p>HDD ID: 2 </p> <p>TEMP 37ºC</p> <p> HEALTH: 100%</p></div>
+        </div>
+        <div class="devicesMainContainer">
+          <div class="devicesMain"><p>HDD ID: 3 </p> <p>TEMP 40ºC</p> <p> HEALTH: 100%</p></div>
+        </div>
+        <div class="devicesMainContainer">
+          <div class="devicesMain"><p>HDD ID: 4 </p> <p>TEMP 32ºC</p> <p> HEALTH: 100%</p></div>
+        </div>
+      </div>
     </div>
   </div>
 </body>
-<script src="designScript.js"></script>
+<script src="/designScript.js"></script>
 
 </html>
