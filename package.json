@@ -19,7 +19,9 @@
   },
   "homepage": "https://github.com/nsgbs/HDDInfo#readme",
   "dependencies": {
-    "express": "^4.18.2"
+    "express": "^4.18.2",
+    "xml-query": "^1.5.0",
+    "xml-reader": "^2.4.3"
   },
   "devDependencies": {
     "nodemon": "^2.0.22"
