@@ -50,12 +50,12 @@ botaoGetInfo.addEventListener('click', () => {
             //signature
             let sysMainInfoP = document.createElement('p');
             sysMainInfoP.setAttribute('class', 'bottom-paragraph');
-            sysMainInfoP.innerHTML = 'Developed by NSG';
+            sysMainInfoP.innerHTML = 'Developed by NSGBS';
             sysMainStatusDivData.appendChild(sysMainInfoP);
             
             //add devices
             for (let i=0; i < data.HDDQUANTITY; i++){
-                console.log("for cycle devices");
+                //console.log("for cycle devices");
                 addDevicesToDiv(listDevices, [
                     `HDD num: ${data['Physical_Disk_Information_Disk_' + i]['Hard_Disk_Summary']['Hard_Disk_Number']}`,
                     `Hard_Disk_Device: ${data['Physical_Disk_Information_Disk_' + i]['Hard_Disk_Summary']['Hard_Disk_Device']}`,
@@ -68,6 +68,6 @@ botaoGetInfo.addEventListener('click', () => {
             }
 
             //debug
-            console.log(data)
+            //console.log(data)
         });
 });
