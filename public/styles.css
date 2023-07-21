@@ -227,8 +227,7 @@ nav a {
   touch-action: manipulation;
 }
 
-#botaoGetInfo:hover,
-#botaoGetInfo:focus {
+#botaoGetInfo:hover {
   opacity: .75;
 }
 
