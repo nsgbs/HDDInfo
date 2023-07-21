@@ -175,6 +175,10 @@ nav a:hover {
   background-color: #ffffff;
 }
 
+.deviceParagraph{
+  margin: -1px 0px;
+}
+
 #systemMainStatusDiv{
   background-color: #ffffff;
   display: flex;

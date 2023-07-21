@@ -25,6 +25,7 @@ function addDevicesToDiv(divDevices, innerHtmlData=[]){
     let devicesMainP = document.createElement('p');
     innerHtmlData.forEach((value) => {
         devicesMainP = document.createElement('p');
+        devicesMainP.setAttribute('class', 'deviceParagraph')
         devicesMainP.innerHTML = value;
         devicesMain.appendChild(devicesMainP);
     });
