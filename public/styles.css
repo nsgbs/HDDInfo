@@ -217,9 +217,9 @@ nav a:hover {
 .optionBlock{
   display: flex;
   margin: 10px ;
-  border: 2px solid #5D737E;
+  box-shadow: 1px 1px 15px #00000028;
   background-color: #ffffff;
-  border-radius: 20px;
+  border-radius: 30px;
   align-items: center;
   justify-content: space-between;
   padding: 15px;
