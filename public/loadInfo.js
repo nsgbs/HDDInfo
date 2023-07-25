@@ -2,13 +2,7 @@ const botaoGetInfo = document.getElementById('botaoGetInfo');
 const sysMainStatusDiv = document.getElementById('systemMainStatusDiv');
 const sysMainStatusDivData = document.getElementById('systemMainStatusDivData');
 const listDevices = document.getElementById('listDevices');
-//let sysMainInfoP = document.createElement('p');
-//sysMainInfoP.setAttribute('class', 'topMain-paragraph');
-//const devicesMainContainer = document.createElement('div');
-//devicesMainContainer.setAttribute('class', 'devicesMainContainer');
-//const devicesMain = document.createElement('div');
-//devicesMain.setAttribute('class', 'devicesMain')
-//const devicesMainP = document.createElement('p');
+
 
 function addParagraphsToDiv(divToAdd, innerHtmlData){
     let sysMainInfoP = document.createElement('p');
@@ -17,11 +11,23 @@ function addParagraphsToDiv(divToAdd, innerHtmlData){
     divToAdd.appendChild(sysMainInfoP);
 }
 
-function addDevicesToDiv(divDevices, innerHtmlData=[]){
+function addDevicesToDiv(divDevices, innerHtmlData=[], hddHealth){
     let devicesMainContainer = document.createElement('div');
     devicesMainContainer.setAttribute('class', 'devicesMainContainer');
     let devicesMain = document.createElement('div');
     devicesMain.setAttribute('class', 'devicesMain');
+    let devicesMainLeftBar = document.createElement('div');
+    if (hddHealth >= 90)
+        devicesMainLeftBar.setAttribute('class', 'tagImgHDD goodHealthHDD');
+    else if (hddHealth < 90 && hddHealth >= 70)
+        devicesMainLeftBar.setAttribute('class', 'tagImgHDD warningHealthHDD');
+    else
+        devicesMainLeftBar.setAttribute('class', 'tagImgHDD badHealthHDD')
+    let hddIcon = document.createElement('img');
+    hddIcon.setAttribute('class', 'hddIcon');
+    hddIcon.setAttribute('src', '/hdd.ico');
+    devicesMainLeftBar.appendChild(hddIcon);
+    devicesMainContainer.appendChild(devicesMainLeftBar);
     let devicesMainP = document.createElement('p');
     innerHtmlData.forEach((value) => {
         devicesMainP = document.createElement('p');
@@ -50,7 +56,7 @@ botaoGetInfo.addEventListener('click', () => {
 
             //signature
             let sysMainInfoP = document.createElement('p');
-            sysMainInfoP.setAttribute('class', 'bottom-paragraph');
+            sysMainInfoP.setAttribute('class', 'bottom-paragraph-signature');
             sysMainInfoP.innerHTML = 'Developed by NSGBS';
             sysMainStatusDivData.appendChild(sysMainInfoP);
             
@@ -65,7 +71,7 @@ botaoGetInfo.addEventListener('click', () => {
                     `Performance: ${data['Physical_Disk_Information_Disk_' + i]['Hard_Disk_Summary']['Performance']}`,
                     `Description: ${data['Physical_Disk_Information_Disk_' + i]['Hard_Disk_Summary']['Description']}`,
                     `Action: ${data['Physical_Disk_Information_Disk_' + i]['Hard_Disk_Summary']['Tip']}`
-                ])
+                ], parseInt(data['Physical_Disk_Information_Disk_' + i]['Hard_Disk_Summary']['Health']))
             }
 
             //debug
