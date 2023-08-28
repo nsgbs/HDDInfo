@@ -20,7 +20,7 @@
         <span class="menu-cascading_span">
           <span class="spacing_span_menu"></span>
           <ul class="menu-cascading">
-            <li><a href="/config" class="btn-menu-cascading">Configurações Avançadas</a></li>
+            <li><a href="/config" class="btn-menu-cascading">Advanced Configuration</a></li>
         </span>
         </ul>
       </li>
@@ -30,9 +30,16 @@
   <div id="containerDiv">
     <div id="mainContentDiv">
       <div class="optionBlock">
-        <p>Enable DEBUG</p>
+        <p>Dark mode</p>
         <label class="switch">
-          <input type="checkbox">
+          <input type="checkbox" class="darkModeSwitch">
+          <span class="slider round"></span>
+        </label>
+      </div>
+      <div class="optionBlock">
+        <p>Save last data</p>
+        <label class="switch">
+          <input type="checkbox" class="rememberInfoSwitch">
           <span class="slider round"></span>
         </label>
       </div>
@@ -40,7 +47,6 @@
   </div>
 </div>
 </body>
-<script src="/designScript.js"></script>
-<script src="/loadInfo.js"></script>
+<script src="/config.js"></script>
 
 </html>
