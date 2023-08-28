@@ -5,14 +5,23 @@ const { promisify } = require('util');
 const XmlReader = require('xml-reader');
 const pathXml = (__dirname + '/report.xml');
 const xmlQuery = require('xml-query');
+const fs1 = require('fs').promises;
 const readFileAsync = promisify(fs.readFile);
+const writeFileAsync = promisify(fs.writeFile);
 const exec = promisify(require('child_process').exec);
+const bodyParser = require('body-parser');
+let systemConfig = {};
 
-
+app.use(bodyParser.json());
 app.use(express.static('public'));
 
 app.get('/', (req, res) => {
   res.sendFile(__dirname + '/index.html');
+});
+
+app.get('/api/configInfo', (req, res) => {
+  const configToSend = req.query.configParameter;
+  res.send(systemConfig[configToSend]);
 });
 
 app.get('/config', (req, res) => {
@@ -22,14 +31,75 @@ app.get('/config', (req, res) => {
 app.get('/getNewInfo', (req, res) => {
   console.log("parsedInfo");
   getInfoHDDsDEBUG().then(parsedInfo => {
+    saveInfoHDDs(parsedInfo);
+    res.send(parsedInfo);
+  });
+});
+
+async function saveInfoHDDs(data){
+  writeFileAsync(`${__dirname}/lastInfo.json`,JSON.stringify(data),{encoding: 'utf8'});
+};
+
+async function getLastInfoHDDs(){
+  let lastInfo;
+  try{
+    lastInfo = await readFileAsync(`${__dirname}/lastInfo.json`, {encoding: 'utf8'});
+    lastInfo = JSON.parse(lastInfo);
+  }
+  catch{
+    lastInfo = {}
+  }
+  return lastInfo;
+};
+
+app.get('/api/getLastInfo', (req, res) => {
+  console.log("parsedLastInfo");
+  getLastInfoHDDs().then(parsedInfo => {
     res.send(parsedInfo)
   });
 });
 
+async function loadConfig(){
+  let parsedConfigFile;
+  try{
+    const configFile = await readFileAsync(`${__dirname}/config.json`, {encoding: 'utf8'});
+    parsedConfigFile = JSON.parse(configFile);
+  }
+  catch(e){
+    if(e.code === 'ENOENT'){
+      parsedConfigFile = {'creationDate': Date.now()};
+    } else {
+      console.error('Loading config error. Blank config loaded instead.');
+      console.error(e);
+      parsedConfigFile = {'creationDate': Date.now()};
+    }
+  }
+  return parsedConfigFile;
+}
 
-app.listen(3000, () => {
-  console.log("server exec on port 3000");
+async function saveConfig(config){
+  let jsonConfig = await loadConfig();
+  jsonConfig[Object.entries(config)[0][0]] = Object.entries(config)[0][1]
+  systemConfig[Object.entries(config)[0][0]] = Object.entries(config)[0][1]
+  await writeFileAsync(`${__dirname}/config.json`,JSON.stringify(jsonConfig),{encoding: 'utf8'});
+}
+
+
+app.post('/api/saveConfig', (req, res) => {
+  (async function() {
+    await saveConfig(req.body);
+  })();
+  
+
 });
+
+app.on('configLoaded', () => {
+  app.listen(3000, () => {
+    console.log("server exec on port 3000");
+  })
+});
+
+
 
 async function getInfoHDDs() {
   try {
@@ -85,3 +155,9 @@ async function getInfoHDDsDEBUG() {
     }
   return parsedInfo;
 }
+
+(async() => {
+  systemConfig = await loadConfig();
+  app.emit('configLoaded');
+})();
+
