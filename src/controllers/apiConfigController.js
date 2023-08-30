@@ -1,4 +1,7 @@
+const configManager = require('./../../configManager');
+
 exports.configInfo = (req, res) => {
+    let systemConfig = {};
     const configToSend = req.query.configParameter;
     res.send(systemConfig[configToSend]);
 };
@@ -11,6 +14,6 @@ exports.getLastInfo = (req, res) => {
 
 exports.saveConfig = (req, res) => {
     (async function() {
-        await saveConfig(req.body);
+        await configManager.saveConfig(req.body);
       })();
 };

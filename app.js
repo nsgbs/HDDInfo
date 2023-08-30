@@ -8,7 +8,7 @@ const bodyParser = require('body-parser');
 let systemConfig = {};
 const routes = require('./routes')
 const path = require('path');
-
+const configManager = require('./configManager');
 
 app.use(bodyParser.json());
 app.use(express.static('public'));
@@ -61,7 +61,7 @@ app.get('/api/getLastInfo', (req, res) => {
     res.send(parsedInfo)
   });
 });
-*/
+
 
 async function loadConfig(){
   let parsedConfigFile;
@@ -88,7 +88,7 @@ async function saveConfig(config){
   await writeFileAsync(`${__dirname}/config.json`,JSON.stringify(jsonConfig),{encoding: 'utf8'});
 }
 
-/*
+
 app.post('/api/saveConfig', (req, res) => {
   (async function() {
     await saveConfig(req.body);
@@ -107,7 +107,7 @@ app.on('configLoaded', () => {
 
 
 (async() => {
-  systemConfig = await loadConfig();
+  systemConfig = await configManager.loadConfig();
   app.emit('configLoaded');
 })();
 
