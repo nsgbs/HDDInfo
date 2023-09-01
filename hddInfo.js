@@ -65,3 +65,15 @@ exports.getInfoHDDsDEBUG = async function () {
     }
     return parsedInfo;
 }
+
+exports.getLastInfoHDDs = async function (){
+    let lastInfo;
+    try{
+      lastInfo = await readFileAsync(`${__dirname}/lastInfo.json`, {encoding: 'utf8'});
+      lastInfo = JSON.parse(lastInfo);
+    }
+    catch{
+      lastInfo = {}
+    }
+    return lastInfo;
+  };

@@ -39,21 +39,11 @@ app.get('/getNewInfo', (req, res) => {
   });
 });
 */
-async function saveInfoHDDs(data){
-  writeFileAsync(`${__dirname}/lastInfo.json`,JSON.stringify(data),{encoding: 'utf8'});
-};
+// async function saveInfoHDDs(data){
+//   writeFileAsync(`${__dirname}/lastInfo.json`,JSON.stringify(data),{encoding: 'utf8'});
+// };
 
-async function getLastInfoHDDs(){
-  let lastInfo;
-  try{
-    lastInfo = await readFileAsync(`${__dirname}/lastInfo.json`, {encoding: 'utf8'});
-    lastInfo = JSON.parse(lastInfo);
-  }
-  catch{
-    lastInfo = {}
-  }
-  return lastInfo;
-};
+
 /*
 app.get('/api/getLastInfo', (req, res) => {
   console.log("parsedLastInfo");
