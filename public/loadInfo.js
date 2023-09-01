@@ -73,10 +73,16 @@ function generateInfoPage(data){
     listDevices.replaceChildren();
 
     //add system data
-    addParagraphsToDiv(sysMainStatusDivData, `Versão instalada: ${data.Installed_version}`);
-    addParagraphsToDiv(sysMainStatusDivData, `Report criado em: ${data.Current_Date_And_Time}`);
-    addParagraphsToDiv(sysMainStatusDivData, `Tempo de criação: ${data.Report_Creation_Time}`);
-    addParagraphsToDiv(sysMainStatusDivData, `Nome do sistema: ${data.Computer_Name}`);
+    if (data.Installed_version !== undefined){
+        addParagraphsToDiv(sysMainStatusDivData, `Versão instalada: ${data.Installed_version}`);
+        addParagraphsToDiv(sysMainStatusDivData, `Report criado em: ${data.Current_Date_And_Time}`);
+        addParagraphsToDiv(sysMainStatusDivData, `Tempo de criação: ${data.Report_Creation_Time}`);
+        addParagraphsToDiv(sysMainStatusDivData, `Nome do sistema: ${data.Computer_Name}`);
+    }
+
+    if (data.error !== undefined){
+        addParagraphsToDiv(sysMainStatusDivData, data.error);
+    }
 
     //signature
     let sysMainInfoP = document.createElement('p');

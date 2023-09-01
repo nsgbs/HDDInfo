@@ -1,13 +1,11 @@
-const getInfoHDDs = require('./../../hddInfo');
+const getInfoHDDs = require('./../utils/hddInfo');
 
 exports.mainPage = (req, res) => {
-    //res.sendFile(__dirname + '/../../index.html');
-    const datasend = { data: 'teste'}
-    res.render('index', datasend);
+    res.render('index');
 };
 
 exports.newInfo = (req, res) => {
-    getInfoHDDs.getInfoHDDsDEBUG().then(parsedInfo => {
+    getInfoHDDs.getInfoHDDs().then(parsedInfo => {
         getInfoHDDs.saveInfoHDDs(parsedInfo);
         res.send(parsedInfo);
     });

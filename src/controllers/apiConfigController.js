@@ -1,5 +1,5 @@
-const configManager = require('./../../configManager');
-const getInfoHDDs = require('./../../hddInfo');
+const configManager = require('../utils/configManager');
+const getInfoHDDs = require('./../utils/hddInfo');
 
 exports.configInfo = (req, res) => {
     const sysConf = configManager.systemConfig;
