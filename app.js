@@ -107,7 +107,7 @@ app.on('configLoaded', () => {
 
 
 (async() => {
-  systemConfig = await configManager.loadConfig();
+  configManager.systemConfig = await configManager.loadConfig();
   app.emit('configLoaded');
 })();
 

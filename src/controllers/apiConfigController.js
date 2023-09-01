@@ -1,9 +1,9 @@
 const configManager = require('./../../configManager');
 
 exports.configInfo = (req, res) => {
-    let systemConfig = {};
+    const sysConf = configManager.systemConfig;
     const configToSend = req.query.configParameter;
-    res.send(systemConfig[configToSend]);
+    res.send(sysConf[configToSend]);
 };
 
 exports.getLastInfo = (req, res) => {

@@ -2,7 +2,8 @@ const getInfoHDDs = require('./../../hddInfo');
 
 exports.mainPage = (req, res) => {
     //res.sendFile(__dirname + '/../../index.html');
-    res.render('index')
+    const datasend = { data: 'teste'}
+    res.render('index', datasend);
 };
 
 exports.newInfo = (req, res) => {
