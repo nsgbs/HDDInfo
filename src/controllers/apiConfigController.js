@@ -1,4 +1,5 @@
 const configManager = require('./../../configManager');
+const getInfoHDDs = require('./../../hddInfo');
 
 exports.configInfo = (req, res) => {
     const sysConf = configManager.systemConfig;
@@ -7,7 +8,7 @@ exports.configInfo = (req, res) => {
 };
 
 exports.getLastInfo = (req, res) => {
-    getLastInfoHDDs().then(parsedInfo => {
+    getInfoHDDs.getLastInfoHDDs().then(parsedInfo => {
         res.send(parsedInfo)
       });
 };
