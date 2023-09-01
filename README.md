@@ -1,2 +1,2 @@
 # HDDInfo
-Mostra a informação dos HDs instalados no servidor
+Web interface for HDD monitoring using HDSentinel as source.
