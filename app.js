@@ -3,7 +3,7 @@ const app = express();
 const bodyParser = require('body-parser');
 const routes = require('./routes')
 const path = require('path');
-const configManager = require('./configManager');
+const configManager = require('./src/utils/configManager');
 
 app.use(bodyParser.json());
 app.use(express.static('public'));
