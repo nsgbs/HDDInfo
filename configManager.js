@@ -1,6 +1,5 @@
 const fs = require('fs');
 const { promisify } = require('util');
-const { param } = require('./routes');
 const readFileAsync = promisify(fs.readFile);
 const writeFileAsync = promisify(fs.writeFile);
 
