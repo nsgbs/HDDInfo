@@ -106,11 +106,25 @@ function generateInfoPage(data){
 
 }
 
+function loadingButtonState(state){
+    if(state){
+        botaoGetInfo.innerHTML = '';
+        botaoGetInfo.classList.add('botaoGetInfo--loading');
+    }else{
+        botaoGetInfo.classList.remove('botaoGetInfo--loading');
+        botaoGetInfo.innerHTML = 'Get Info';
+    }
+}
+
 
 botaoGetInfo.addEventListener('click', () => {
+    loadingButtonState(true);
     fetch('/getNewInfo')
         .then(response => response.json())
-        .then(data => generateInfoPage(data));
+        .then(data => generateInfoPage(data))
+        .then(() => {
+            loadingButtonState(false);
+        })
 });
 
 window.onload = async function loadInfo(){
